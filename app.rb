@@ -6,19 +6,24 @@ RVMRC
 create_file ".rvmrc", rvmrc
 
 empty_directory "lib/generators"
-git :clone => "--depth 0 http://github.com/leshill/rails3-app.git lib/generators"
+git :clone => "--depth 0 http://github.com/mylescarrick/rails3-app.git lib/generators"
 remove_dir "lib/generators/.git"
 
-gem "factory_girl_rails", ">= 1.0.0", :group => :test
+gem "capybara", ">= 0.3.8", :group => [:test, :cucumber]
+gem "cucumber-rails", ">= 0.3.2", :group => [:test, :cucumber]
+gem "database_cleaner", ">= 0.5.2", :group => [:test, :cucumber]
+gem 'machinist', ">= 2.0.0.beta1", :group => [:test, :cucumber]
 gem "haml", ">= 3.0.12"
-gem "rspec-rails", ">= 2.0.0.beta.12", :group => :test
+gem "launchy", ">= 0.3.5", :group => [:test, :cucumber]
+gem "rspec-rails", ">= 2.0.0.beta.12", :group => [:test, :cucumber]
+gem "spork", ">= 0.8.4", :group => [:test, :cucumber]
 
 generators = <<-GENERATORS
 
     config.generators do |g|
       g.template_engine :haml
       g.test_framework :rspec, :fixture => true, :views => false
-      g.fixture_replacement :factory_girl, :dir => "spec/factories"
+      g.fixture_replacement :machinist
     end
 GENERATORS
 
@@ -69,10 +74,10 @@ docs = <<-DOCS
 Run the following commands to complete the setup of #{app_name.humanize}:
 
 % cd #{app_name}
-% gem install bundler
+% gem install bundler --pre #(this flag just until bundler hits primetime)
 % bundle install
-% bundle lock
 % script/rails generate rspec:install
+% script/rails generate cucumber:install --rspec --capybara
 
 DOCS
 
