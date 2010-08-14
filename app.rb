@@ -82,6 +82,7 @@ Run the following commands to complete the setup of #{app_name.humanize}:
 % bundle install
 % script/rails generate rspec:install
 % script/rails generate cucumber:install --rspec --capybara
+% ...then follow any remaining machinist instructions at http://wiki.github.com/notahat/machinist/installation
 
 DOCS
 
