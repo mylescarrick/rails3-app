@@ -9,6 +9,9 @@ empty_directory "lib/generators"
 git :clone => "--depth 0 http://github.com/mylescarrick/rails3-app.git lib/generators"
 remove_dir "lib/generators/.git"
 
+apply 'http://datamapper.org/templates/rails/gemfile.rb'
+apply 'http://datamapper.org/templates/rails/application.rb'
+
 gem "capybara", ">= 0.3.8", :group => [:test, :cucumber]
 gem "cucumber-rails", ">= 0.3.2", :group => [:test, :cucumber]
 gem "database_cleaner", ">= 0.5.2", :group => [:test, :cucumber]
@@ -17,6 +20,7 @@ gem "haml", ">= 3.0.12"
 gem "launchy", ">= 0.3.5", :group => [:test, :cucumber]
 gem "rspec-rails", ">= 2.0.0.beta.12", :group => [:test, :cucumber]
 gem "spork", ">= 0.8.4", :group => [:test, :cucumber]
+gem "rails3-generators"
 
 generators = <<-GENERATORS
 
