@@ -21,6 +21,7 @@ gem "launchy", ">= 0.3.5", :group => [:test, :cucumber]
 gem "rspec-rails", ">= 2.0.0.beta.12", :group => [:test, :cucumber]
 gem "spork", ">= 0.8.4", :group => [:test, :cucumber]
 gem "rails3-generators"
+gem "unicorn"
 
 generators = <<-GENERATORS
 
